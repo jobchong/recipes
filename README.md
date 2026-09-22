@@ -24,13 +24,15 @@ This performs a clean build and verifies the generated internal links, anchors, 
 1. Copy `templates/recipe.md` to `src/recipes/your-recipe-name.md`.
 2. Fill in the front matter: title, card description, date, total time in minutes, yield, ingredient/occasion labels, ingredient groups, method, and optional notes. Use a date in `YYYY-MM-DD` form. Recipes appear newest first.
 3. Write the introductory blurb below the front matter in ordinary Markdown.
-4. Optionally put a compressed photograph in `src/assets/images/` and set `image` and `imageAlt`. Aim for a 4:3 image, about 1200 × 900 pixels and under 300 KB. A recipe without a photograph is supported too.
+4. Optionally put a compressed photograph in `src/assets/images/` and set `image`, `imageAlt`, `imageWidth`, and `imageHeight` (the file's actual pixel dimensions). Aim for a longest edge of about 1200 pixels and under 300 KB. Portrait photographs are supported; optional `imagePosition` (two percentages) and `imageZoom` (1–3) control display framing. A recipe without a photograph is supported too.
 5. Remove `draft: true` when ready and run `npm run check`.
 6. Commit and push to `main`. Once Cloudflare is connected, that push publishes the update.
 
 The filename becomes `/recipes/your-recipe-name/`. Ingredients and occasions automatically get index pages and recipe lists; no other file needs editing. Tag only the main ingredients people would browse for, rather than every pinch of salt. Reuse existing label spellings (e.g. `Spring onions`) to keep the index tidy.
 
 `draft: true` omits a recipe entirely. Production builds clean old output so a deleted or newly drafted recipe does not remain published. `example: true` marks a visible sample recipe and tells search engines not to index its detail page. These are different flags.
+
+`placeholder: true` keeps a photo page visible while its recipe is being written. Cards say “Recipe to come”; times and servings are shown as “To come”, and the detail page has a visible placeholder note (including in print). These pages have no Recipe JSON-LD, are marked noindex, and are excluded from the sitemap. To finish one, replace the filler introduction, ingredient list, method, and notes; provide `totalMinutes` and `yield`; confirm the name and category labels; then remove `placeholder: true` and run the checks. The filename stays the same so its URL is preserved.
 
 Recipe fields use plain text; only the introductory body uses Markdown. For front matter containing a colon followed by a space, use a YAML block scalar:
 
@@ -48,7 +50,7 @@ notes:
 - Shared header and footer: `src/_includes/layouts/base.njk`.
 - Recipe layout and print formatting: `src/_includes/layouts/recipe.njk` and `src/assets/style.css`.
 
-The working name is **At the table**. The foreword is starter copy. Three **sample recipes** and their AI-generated illustrative photographs show the design; they are not supplied or kitchen-tested by the owner. Replace or remove them before launching the real collection. Image provenance is in `ASSETS.md`. No prose or images were copied from the reference sites.
+The working name is **At the table**. The foreword is starter copy. Fourteen dish pages now use photographs selected from the supplied **Food pics for site** album. Dish names and introductory prose are provisional, and the actual recipe details are still to come. The three original sample pages and their generated images have been removed. Image provenance and selection notes are in `ASSETS.md`.
 
 ## Publish automatically with Cloudflare Pages
 

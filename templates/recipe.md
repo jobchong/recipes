@@ -5,9 +5,16 @@ date: 2026-09-21
 draft: true
 totalMinutes: 30
 yield: 2 servings
-# Optional photo. Put the file in src/assets/images/ and uncomment both fields.
+# Optional photo. Put the file in src/assets/images/ and uncomment all four fields.
 # image: /assets/images/your-recipe.jpg
 # imageAlt: A useful description of the actual photograph.
+# imageWidth: 1200
+# imageHeight: 900
+# Optional framing for portrait or shared-table photographs.
+# imagePosition: 50% 50%
+# imageZoom: 1
+# Use placeholder: true for a visible photo page awaiting its real recipe.
+# Placeholder pages omit cooking times and Recipe structured data.
 ingredientTags: [Tomatoes]
 occasions: [Weeknight dinners]
 # If adapted, credit the source. Omit this block for an original recipe.

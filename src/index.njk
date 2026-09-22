@@ -2,6 +2,7 @@
 layout: layouts/base.njk
 isHome: true
 ---
+{% from "photo.njk" import photo %}
 <section class="foreword" id="foreword" aria-labelledby="foreword-title">
   <div class="foreword-copy">
     <p class="eyebrow">A note from the kitchen</p>
@@ -13,8 +14,8 @@ isHome: true
   {% if featured %}
   <div class="featured-recipe">
     <a href="{{ featured.url }}" class="featured-link">
-      {% if featured.data.image %}<div class="featured-image"><img src="{{ featured.data.image }}" alt="{{ featured.data.imageAlt }}" width="1200" height="900" fetchpriority="high" decoding="async"></div>{% endif %}
-      <div class="featured-caption"><span class="eyebrow">On the table</span><span>{{ featured.data.totalMinutes }} minutes</span></div>
+      {% if featured.data.image %}{{ photo(featured.data, 'featured-image', true) }}{% endif %}
+      <div class="featured-caption"><span class="eyebrow">On the table</span><span>{% if featured.data.placeholder %}Recipe to come{% else %}{{ featured.data.totalMinutes }} minutes{% endif %}</span></div>
       <h2>{{ featured.data.title }}</h2>
       {% if featured.data.example %}<span class="sample-label">Sample recipe</span>{% endif %}
     </a>

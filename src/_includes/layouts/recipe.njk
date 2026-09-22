@@ -1,6 +1,7 @@
 ---
 layout: layouts/base.njk
 ---
+{% from "photo.njk" import photo %}
 <nav class="breadcrumbs" aria-label="Breadcrumb"><a href="/">Home</a><span aria-hidden="true">/</span><a href="/recipes/">Recipes</a><span aria-hidden="true">/</span><span aria-current="page">{{ title }}</span></nav>
 <article>
   <div class="recipe-intro{% if not image %} recipe-intro--text{% endif %}">
@@ -10,11 +11,12 @@ layout: layouts/base.njk
       <div class="prose recipe-blurb">{{ content | safe }}</div>
       <div class="recipe-actions"><a class="button" href="#recipe">Jump to recipe <span aria-hidden="true">↓</span></a><button class="button print-button" type="button" hidden data-print>Print recipe</button></div>
       {% if example %}<p class="example-note">Sample recipe · here to preview the collection.</p>{% endif %}
+      {% if placeholder %}<p class="placeholder-note"><strong>Recipe to come.</strong> The introduction is placeholder text; ingredients, quantities, and method will follow.</p>{% endif %}
     </div>
-    {% if image %}<img class="recipe-hero" src="{{ image }}" alt="{{ imageAlt }}" width="1200" height="900" fetchpriority="high" decoding="async">{% endif %}
+    {% if image %}{{ photo({image: image, imageAlt: imageAlt, imageWidth: imageWidth, imageHeight: imageHeight, imagePosition: imagePosition, imageZoom: imageZoom}, 'recipe-hero', true) }}{% endif %}
   </div>
   <div id="recipe" tabindex="-1">
-    <dl class="recipe-facts"><div><dt>Total time</dt><dd>{{ totalMinutes }} minutes</dd></div><div><dt>Makes</dt><dd>{{ yield }}</dd></div>{% if source %}<div><dt>Adapted from</dt><dd>{% if source.url %}<a href="{{ source.url }}">{{ source.name }}</a>{% else %}{{ source.name }}{% endif %}</dd></div>{% endif %}</dl>
+    <dl class="recipe-facts"><div><dt>Total time</dt><dd>{% if placeholder %}To come{% else %}{{ totalMinutes }} minutes{% endif %}</dd></div><div><dt>Makes</dt><dd>{% if placeholder %}To come{% else %}{{ yield }}{% endif %}</dd></div>{% if source %}<div><dt>Adapted from</dt><dd>{% if source.url %}<a href="{{ source.url }}">{{ source.name }}</a>{% else %}{{ source.name }}{% endif %}</dd></div>{% endif %}</dl>
     <div class="recipe-body">
       <section aria-labelledby="ingredients-title">
         <h2 id="ingredients-title">Ingredients</h2>
@@ -26,5 +28,5 @@ layout: layouts/base.njk
   </div>
   <div class="recipe-tags"><span>Filed under</span>{% for ingredient in ingredientTags %}<a class="tag" href="/ingredients/{{ ingredient | slug }}/">{{ ingredient }}</a>{% endfor %}{% for occasion in occasions %}<a class="tag" href="/occasions/{{ occasion | slug }}/">{{ occasion }}</a>{% endfor %}</div>
 </article>
-<script type="application/ld+json">{{ {title: title, description: description, totalMinutes: totalMinutes, yield: yield, ingredientTags: ingredientTags, occasions: occasions, ingredients: ingredients, steps: steps, image: image} | recipeSchema(site, page.url) | safe }}</script>
+{% if not placeholder %}<script type="application/ld+json">{{ {title: title, description: description, totalMinutes: totalMinutes, yield: yield, ingredientTags: ingredientTags, occasions: occasions, ingredients: ingredients, steps: steps, image: image} | recipeSchema(site, page.url) | safe }}</script>{% endif %}
 <script src="/assets/recipe.js" defer></script>

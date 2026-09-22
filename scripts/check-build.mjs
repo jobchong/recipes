@@ -8,6 +8,7 @@ const walk = (dir) => readdirSync(dir, { withFileTypes: true }).flatMap((entry) 
 const pages = walk(output).filter((path) => path.endsWith(".html"));
 assert(pages.length > 0, "No HTML pages were built.");
 let recipeCount = 0;
+let placeholderCount = 0;
 for (const path of pages) {
   const html = readFileSync(path, "utf8");
   const name = relative(output, path);
@@ -35,6 +36,12 @@ for (const path of pages) {
     assert.match(match[0], /\bheight="\d+"/, `${name}: image needs dimensions`);
   }
   const structuredData = html.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/);
+  if (html.includes('class="placeholder-note"')) {
+    assert(!structuredData, `${name}: a placeholder must not publish Recipe schema`);
+    assert(html.includes('content="noindex, nofollow"'), `${name}: placeholders must not be indexed`);
+    assert(html.includes('id="recipe"'), `${name}: recipe anchor missing`);
+    placeholderCount++;
+  }
   if (structuredData) {
     const recipe = JSON.parse(structuredData[1]);
     assert.equal(recipe["@type"], "Recipe");
@@ -48,4 +55,4 @@ for (const path of pages) {
 for (const file of ["404.html", "robots.txt", "sitemap.xml", "assets/style.css", "assets/recipe.js"]) {
   assert(existsSync(join(output, file)), `Missing ${file}`);
 }
-console.log(`Checked ${pages.length} pages and ${recipeCount} recipes: internal links, anchors, images, metadata and recipe schema are valid.`);
+console.log(`Checked ${pages.length} pages, ${recipeCount} complete recipes and ${placeholderCount} photo recipe placeholders: internal links, anchors, images, metadata and recipe schema are valid.`);

@@ -45,7 +45,8 @@
   .text-link span { display: inline-block; margin-left: .8rem; }
   .featured-link { text-decoration: none; display: block; }
   .featured-image { aspect-ratio: 1.17; overflow: hidden; background: var(--soft); }
-  .featured-image img { height: 100%; object-fit: cover; }
+  .photo-frame { overflow: hidden; background: var(--soft); }
+  .photo-frame img { width: 100%; height: 100%; object-fit: cover; object-position: var(--photo-position, 50% 50%); transform: scale(var(--photo-zoom, 1)); transform-origin: var(--photo-position, 50% 50%); }
   .featured-caption { display: flex; justify-content: space-between; gap: 1rem; color: var(--muted); margin: 1.1rem 0 .55rem; font-size: .8125rem; }
   .featured-recipe h2 { font-size: clamp(1.8rem, 2.4vw, 2.3rem); letter-spacing: -.035em; }
   .sample-label { display: inline-block; color: var(--muted); font-size: .75rem; letter-spacing: .025em; margin-top: .65rem; }
@@ -57,7 +58,7 @@
   .recipe-card-link { display: block; text-decoration: none; }
   .card-image { aspect-ratio: 4 / 3; background: var(--soft); overflow: hidden; }
   .card-image img { height: 100%; object-fit: cover; transition: transform .35s; }
-  .recipe-card-link:hover .card-image img { transform: scale(1.025); }
+  .recipe-card-link:hover .card-image img { transform: scale(calc(var(--photo-zoom, 1) * 1.025)); }
   .card-meta { display: flex; justify-content: space-between; gap: 1rem; font-size: .75rem; letter-spacing: .035em; color: var(--muted); margin: 1rem 0 .6rem; }
   .recipe-card h2, .recipe-card h3 { font-size: 1.7rem; letter-spacing: -.025em; }
   .recipe-card p { margin-top: .65rem; font-size: .9375rem; color: var(--muted); line-height: 1.55; }
@@ -116,6 +117,7 @@
   .recipe-tags > span { font-size: .8125rem; margin-right: .5rem; color: var(--muted); }
   .tag { padding: .35rem .8rem; border: 1px solid var(--line); text-decoration: none; font-size: .8125rem; }
   .example-note { color: var(--muted); font-size: .8125rem; margin-top: 1rem; }
+  .placeholder-note { color: var(--muted); font-size: .875rem; margin-top: 1.2rem; padding-left: 1rem; border-left: 2px solid var(--accent); }
   .empty-state { padding: 1.5rem 0 3rem; color: var(--muted); }
 }
 @layer responsive {

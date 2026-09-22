@@ -1,0 +1,5 @@
+{% macro photo(data, className, priority=false) %}
+<div class="photo-frame {{ className }}" style="--photo-position: {{ data.imagePosition or '50% 50%' }}; --photo-zoom: {{ data.imageZoom or 1 }};">
+  <img src="{{ data.image }}" alt="{{ data.imageAlt }}" width="{{ data.imageWidth }}" height="{{ data.imageHeight }}" {% if priority %}fetchpriority="high"{% else %}loading="lazy"{% endif %} decoding="async">
+</div>
+{% endmacro %}

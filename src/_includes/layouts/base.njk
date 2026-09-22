@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>{% if title %}{{ title }} · {% endif %}{{ site.name }}</title>
   <meta name="description" content="{{ description or site.description }}">
-  {% if not site.url or example or noindex %}<meta name="robots" content="noindex, nofollow">{% endif %}
+  {% if not site.url or example or placeholder or noindex %}<meta name="robots" content="noindex, nofollow">{% endif %}
   {% if site.url %}<link rel="canonical" href="{{ page.url | absoluteUrl(site.url) }}">{% endif %}
   <meta name="theme-color" content="#f8f6f0">
   <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">

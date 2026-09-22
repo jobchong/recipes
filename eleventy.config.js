@@ -6,10 +6,10 @@ const publicRecipes = (api) => api.getFilteredByGlob("src/recipes/*.md").filter(
 
 function validateRecipe({ data, inputPath }) {
   const fail = (message) => { throw new Error(`${inputPath}: ${message}`); };
-  for (const key of ["title", "description", "yield"]) {
+  for (const key of ["title", "description", ...(!data.placeholder ? ["yield"] : [])]) {
     if (typeof data[key] !== "string" || !data[key].trim()) fail(`Provide ${key}.`);
   }
-  if (!Number.isInteger(data.totalMinutes) || data.totalMinutes <= 0) fail("totalMinutes must be a positive whole number.");
+  if (!data.placeholder && (!Number.isInteger(data.totalMinutes) || data.totalMinutes <= 0)) fail("totalMinutes must be a positive whole number.");
   for (const key of ["ingredientTags", "occasions", "ingredients", "steps"]) {
     if (!Array.isArray(data[key]) || !data[key].length) fail(`Provide a nonempty ${key} list.`);
   }
@@ -22,6 +22,9 @@ function validateRecipe({ data, inputPath }) {
   if (data.steps.some((step) => typeof step !== "string")) fail("Steps must be text.");
   if (data.notes && (!Array.isArray(data.notes) || data.notes.some((note) => typeof note !== "string"))) fail("Notes must be a list of text.");
   if (data.image && (!data.image.startsWith("/assets/images/") || !existsSync(`src${data.image}`) || !data.imageAlt)) fail("An image needs a local /assets/images/ file and imageAlt text.");
+  if (data.image && (![data.imageWidth, data.imageHeight].every((value) => Number.isInteger(value) && value > 0))) fail("An image needs its actual imageWidth and imageHeight.");
+  if (data.imagePosition && !/^\d+(?:\.\d+)?% \d+(?:\.\d+)?%$/.test(data.imagePosition)) fail("imagePosition must be two percentages.");
+  if (data.imageZoom !== undefined && (typeof data.imageZoom !== "number" || data.imageZoom < 1 || data.imageZoom > 3)) fail("imageZoom must be between 1 and 3.");
 }
 
 function taxonomy(api, field) {
