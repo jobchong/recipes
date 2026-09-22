@@ -1,0 +1,31 @@
+---
+layout: layouts/base.njk
+isHome: true
+---
+<section class="foreword" id="foreword" aria-labelledby="foreword-title">
+  <div class="foreword-copy">
+    <p class="eyebrow">A note from the kitchen</p>
+    <h1 id="foreword-title">Good food.<br><em>Worth keeping.</em></h1>
+    <div class="prose foreword-text">{% renderFile "./src/_includes/foreword.md" %}</div>
+    <a href="/recipes/" class="text-link">Find something to cook <span aria-hidden="true">↗</span></a>
+  </div>
+  {% set featured = collections.recipes[0] %}
+  {% if featured %}
+  <div class="featured-recipe">
+    <a href="{{ featured.url }}" class="featured-link">
+      {% if featured.data.image %}<div class="featured-image"><img src="{{ featured.data.image }}" alt="{{ featured.data.imageAlt }}" width="1200" height="900" fetchpriority="high" decoding="async"></div>{% endif %}
+      <div class="featured-caption"><span class="eyebrow">On the table</span><span>{{ featured.data.totalMinutes }} minutes</span></div>
+      <h2>{{ featured.data.title }}</h2>
+      {% if featured.data.example %}<span class="sample-label">Sample recipe</span>{% endif %}
+    </a>
+  </div>
+  {% endif %}
+</section>
+<section class="home-recipes" aria-labelledby="collection-title">
+  <div class="section-heading"><div><p class="eyebrow">The recipe notebook</p><h2 id="collection-title">Something good to make.</h2></div><a class="text-link" href="/recipes/">All recipes <span aria-hidden="true">↗</span></a></div>
+  <div class="recipe-grid">{% for recipe in collections.recipes | firstItems(3) %}{% include "recipe-card.njk" %}{% else %}<p class="empty-state">The first recipes are on their way. Come back soon.</p>{% endfor %}</div>
+</section>
+<section class="browse-strip" aria-label="Browse the collection">
+  <a href="/ingredients/"><span class="eyebrow">Start with what you have</span><span class="browse-title">By ingredient <span aria-hidden="true">↗</span></span></a>
+  <a href="/occasions/"><span class="eyebrow">For whatever the day brings</span><span class="browse-title">By occasion <span aria-hidden="true">↗</span></span></a>
+</section>

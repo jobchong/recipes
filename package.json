@@ -1,0 +1,12 @@
+{
+  "name": "at-the-table",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "eleventy --serve",
+    "build": "node scripts/clean.mjs && eleventy",
+    "check": "npm run build && node scripts/check-build.mjs"
+  },
+  "engines": { "node": ">=22" },
+  "devDependencies": { "@11ty/eleventy": "^3.1.2" }
+}

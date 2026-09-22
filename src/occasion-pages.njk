@@ -1,0 +1,13 @@
+---
+layout: layouts/collection.njk
+section: occasions
+pagination:
+  data: collections.occasions
+  size: 1
+  alias: group
+  addAllPagesToCollections: true
+eleventyComputed:
+  title: "{{ group.name }}"
+  description: "Recipes for {{ group.name | lower }} from the collection."
+permalink: "/occasions/{{ group.slug }}/"
+---

@@ -1,0 +1,9 @@
+---
+layout: layouts/base.njk
+---
+<nav class="breadcrumbs" aria-label="Breadcrumb"><a href="/">Home</a><span aria-hidden="true">/</span><a href="/{{ section }}/">{{ section | capitalize }}</a><span aria-hidden="true">/</span><span aria-current="page">{{ group.name }}</span></nav>
+<section class="collection-page" aria-labelledby="page-title">
+  <header class="page-heading"><p class="eyebrow">{% if section == 'ingredients' %}From the pantry{% else %}Around the table{% endif %}</p><h1 id="page-title">{{ group.name }}.</h1></header>
+  <div class="collection-meta"><span>{{ group.recipes.length | recipeCount }}</span><a href="/{{ section }}/">All {{ section }}</a></div>
+  <div class="recipe-grid">{% for recipe in group.recipes %}{% include "recipe-card.njk" %}{% endfor %}</div>
+</section>

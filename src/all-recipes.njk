@@ -1,0 +1,12 @@
+---
+layout: layouts/base.njk
+title: All recipes
+description: Browse the complete recipe notebook.
+section: recipes
+permalink: /recipes/
+---
+<section class="collection-page" aria-labelledby="page-title">
+  <header class="page-heading"><p class="eyebrow">The recipe notebook</p><h1 id="page-title">All recipes.</h1><p>A little inspiration for the next thing you cook.</p></header>
+  <div class="collection-meta"><span>{{ collections.recipes.length | recipeCount }}</span><span>Browse <a href="/ingredients/">by ingredient</a> or <a href="/occasions/">by occasion</a></span></div>
+  <div class="recipe-grid">{% for recipe in collections.recipes %}{% include "recipe-card.njk" %}{% else %}<p class="empty-state">The first recipes are on their way. Come back soon.</p>{% endfor %}</div>
+</section>

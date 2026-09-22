@@ -1,0 +1,30 @@
+---
+layout: layouts/base.njk
+---
+<nav class="breadcrumbs" aria-label="Breadcrumb"><a href="/">Home</a><span aria-hidden="true">/</span><a href="/recipes/">Recipes</a><span aria-hidden="true">/</span><span aria-current="page">{{ title }}</span></nav>
+<article>
+  <div class="recipe-intro{% if not image %} recipe-intro--text{% endif %}">
+    <div>
+      <p class="eyebrow">{{ occasions[0] }}</p>
+      <h1>{{ title }}</h1>
+      <div class="prose recipe-blurb">{{ content | safe }}</div>
+      <div class="recipe-actions"><a class="button" href="#recipe">Jump to recipe <span aria-hidden="true">↓</span></a><button class="button print-button" type="button" hidden data-print>Print recipe</button></div>
+      {% if example %}<p class="example-note">Sample recipe · here to preview the collection.</p>{% endif %}
+    </div>
+    {% if image %}<img class="recipe-hero" src="{{ image }}" alt="{{ imageAlt }}" width="1200" height="900" fetchpriority="high" decoding="async">{% endif %}
+  </div>
+  <div id="recipe" tabindex="-1">
+    <dl class="recipe-facts"><div><dt>Total time</dt><dd>{{ totalMinutes }} minutes</dd></div><div><dt>Makes</dt><dd>{{ yield }}</dd></div>{% if source %}<div><dt>Adapted from</dt><dd>{% if source.url %}<a href="{{ source.url }}">{{ source.name }}</a>{% else %}{{ source.name }}{% endif %}</dd></div>{% endif %}</dl>
+    <div class="recipe-body">
+      <section aria-labelledby="ingredients-title">
+        <h2 id="ingredients-title">Ingredients</h2>
+        {% for group in ingredients %}<div class="ingredient-group">{% if group.name %}<h3>{{ group.name }}</h3>{% endif %}<ul class="ingredients">{% for item in group.items %}<li><label><input type="checkbox"><span>{{ item }}</span></label></li>{% endfor %}</ul></div>{% endfor %}
+      </section>
+      <section aria-labelledby="method-title"><h2 id="method-title">Method</h2><ol class="method">{% for step in steps %}<li><div>{{ step }}</div></li>{% endfor %}</ol></section>
+    </div>
+    {% if notes.length %}<aside class="recipe-notes" aria-labelledby="notes-title"><h2 id="notes-title">Notes & tips</h2><ul>{% for note in notes %}<li>{{ note }}</li>{% endfor %}</ul></aside>{% endif %}
+  </div>
+  <div class="recipe-tags"><span>Filed under</span>{% for ingredient in ingredientTags %}<a class="tag" href="/ingredients/{{ ingredient | slug }}/">{{ ingredient }}</a>{% endfor %}{% for occasion in occasions %}<a class="tag" href="/occasions/{{ occasion | slug }}/">{{ occasion }}</a>{% endfor %}</div>
+</article>
+<script type="application/ld+json">{{ {title: title, description: description, totalMinutes: totalMinutes, yield: yield, ingredientTags: ingredientTags, occasions: occasions, ingredients: ingredients, steps: steps, image: image} | recipeSchema(site, page.url) | safe }}</script>
+<script src="/assets/recipe.js" defer></script>

@@ -1,0 +1,11 @@
+---
+layout: layouts/base.njk
+title: By ingredient
+description: Find a recipe for the ingredients you have on hand.
+section: ingredients
+permalink: /ingredients/
+---
+<section aria-labelledby="page-title">
+  <header class="page-heading"><p class="eyebrow">Start with what you have</p><h1 id="page-title">By ingredient.</h1><p>A bunch of spring onions. A tin of beans. Something good starts here.</p></header>
+  <div class="taxonomy-grid">{% for group in collections.ingredients %}<a class="taxonomy-link" href="/ingredients/{{ group.slug }}/"><strong>{{ group.name }}</strong><span>{{ group.recipes.length | recipeCount }}</span></a>{% else %}<p class="empty-state">Ingredients will appear here as the collection grows.</p>{% endfor %}</div>
+</section>

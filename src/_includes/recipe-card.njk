@@ -1,0 +1,9 @@
+<article class="recipe-card{% if not recipe.data.image %} recipe-card--text{% endif %}">
+  <a href="{{ recipe.url }}" class="recipe-card-link">
+    {% if recipe.data.image %}<div class="card-image"><img src="{{ recipe.data.image }}" alt="{{ recipe.data.imageAlt }}" width="1200" height="900" loading="lazy" decoding="async"></div>{% endif %}
+    <div class="card-meta"><span>{{ recipe.data.occasions[0] }}</span><span>{{ recipe.data.totalMinutes }} min</span></div>
+    {% if isHome %}<h3>{{ recipe.data.title }}</h3>{% else %}<h2>{{ recipe.data.title }}</h2>{% endif %}
+    <p>{{ recipe.data.description }}</p>
+    {% if recipe.data.example %}<span class="sample-label">Sample recipe</span>{% endif %}
+  </a>
+</article>
