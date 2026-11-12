@@ -1,7 +1,7 @@
+# Asset URLs are not fingerprinted, so browsers must revalidate every file.
+# Cloudflare Pages purges its own cache on each deploy and answers unchanged
+# files with a cheap 304, so a push to main shows up on the next page load.
 /*
   X-Content-Type-Options: nosniff
   Referrer-Policy: strict-origin-when-cross-origin
-  # Asset URLs are not fingerprinted, so browsers must revalidate every file.
-  # Cloudflare Pages purges its own cache on each deploy and answers unchanged
-  # files with a cheap 304, so a push to main shows up on the next page load.
   Cache-Control: public, max-age=0, must-revalidate
