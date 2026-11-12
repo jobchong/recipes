@@ -62,7 +62,7 @@
   .recipe-card h2, .recipe-card h3 { font-size: 1.7rem; letter-spacing: -.025em; }
   .recipe-card p { margin-top: .65rem; font-size: .9375rem; color: var(--muted); line-height: 1.55; }
   .recipe-card--text { border-top: 1px solid var(--line); padding-top: .5rem; }
-  .browse-strip { display: grid; grid-template-columns: 1fr 1fr; background: var(--soft); margin-bottom: 4rem; }
+  .browse-strip { display: grid; grid-template-columns: 1fr 1fr; background: var(--soft); margin: 0 -2rem 4rem; }
   .browse-strip > a { display: block; text-decoration: none; padding: 1.8rem 2rem 2rem; }
   .browse-strip > a + a { border-left: 1px solid var(--line); }
   .browse-title { display: flex; justify-content: space-between; align-items: center; font-family: var(--serif); font-size: 2.2rem; letter-spacing: -.04em; margin-top: .35rem; }
@@ -106,7 +106,7 @@
   .method li { counter-increment: step; display: grid; grid-template-columns: 2rem 1fr; gap: .8rem; font-family: var(--serif); font-size: 1.1875rem; line-height: 1.7; }
   .method li + li { margin-top: 1.65rem; }
   .method li::before { content: counter(step, decimal-leading-zero); font-size: 1em; color: var(--accent); font-variant-numeric: tabular-nums; }
-  .recipe-notes { padding: 1.75rem 2rem 2rem; background: var(--soft); margin-bottom: 2.5rem; }
+  .recipe-notes { padding: 1.75rem 2rem 2rem; background: var(--soft); margin: 0 -2rem 2.5rem; }
   .recipe-notes h2 { font-size: 1.9rem; margin-bottom: 1rem; }
   .recipe-notes ul { padding-left: 1.2rem; margin: 0; }
   .recipe-notes li { padding-left: .4rem; }
@@ -137,7 +137,7 @@
     .recipe-card h2, .recipe-card h3 { font-size: 1.45rem; }
     .card-meta { gap: .3rem; flex-wrap: wrap; }
     .browse-strip { grid-template-columns: 1fr; margin-bottom: 2.5rem; }
-    .browse-strip > a { padding: 1.5rem; }
+    .browse-strip > a { padding: 1.5rem 2rem; }
     .browse-strip > a + a { border-left: 0; border-top: 1px solid var(--line); }
     .site-footer { align-items: baseline; gap: 1rem; }
     .taxonomy-grid { grid-template-columns: 1fr 1fr; gap: 0 1.5rem; }
@@ -146,7 +146,7 @@
     .recipe-intro h1 { font-size: 3rem; }
     .recipe-hero { aspect-ratio: 4 / 3; }
     .recipe-body { grid-template-columns: 1fr; gap: 2.4rem; }
-    .recipe-notes { padding: 1.5rem; }
+    .recipe-notes { padding: 1.5rem 2rem; }
     .page-heading { padding-top: 2.2rem; }
   }
   @media (max-width: 420px) { .recipe-grid { grid-template-columns: 1fr; } .recipe-card h2, .recipe-card h3 { font-size: 1.75rem; } .main-nav { gap: 1.7rem; } .collection-meta { align-items: start; flex-direction: column; } }
@@ -174,8 +174,8 @@
     .card-meta { margin: .4rem 0 .15rem; }
     .recipe-card h2, .recipe-card h3 { font-size: 1.2rem; }
     .recipe-card p { margin-top: .2rem; font-size: .8125rem; line-height: 1.4; }
-    .browse-strip { margin-bottom: 1rem; }
-    .browse-strip > a { padding: .8rem 1rem; }
+    .browse-strip { margin: 0 -16px 1rem; }
+    .browse-strip > a { padding: .8rem 16px; }
     .browse-title { font-size: 1.6rem; margin-top: .1rem; }
     .site-footer { padding: 1rem 0; }
     .page-heading { padding: 1rem 0 .7rem; }
@@ -204,7 +204,7 @@
     .ingredients input { margin-top: .15rem; }
     .method li { grid-template-columns: 1.4rem 1fr; gap: .35rem; font-family: var(--sans); font-size: .9375rem; line-height: 1.4; }
     .method li + li { margin-top: .4rem; }
-    .recipe-notes { padding: .7rem .9rem; margin-bottom: .9rem; }
+    .recipe-notes { padding: .7rem 16px; margin: 0 -16px .9rem; }
     .recipe-notes h2 { font-size: 1.2rem; margin-bottom: .25rem; }
     .recipe-notes li { font-size: .9375rem; line-height: 1.4; }
     .recipe-notes li + li { margin-top: .25rem; }
@@ -230,7 +230,7 @@
   .ingredients input:checked + span { text-decoration: none; color: black; }
   .method li { font-size: 11pt; break-inside: avoid; }
   .method li + li { margin-top: .8rem; }
-  .recipe-notes { background: none; border-top: 1px solid #999; padding: 1rem 0 0; }
+  .recipe-notes { background: none; border-top: 1px solid #999; padding: 1rem 0 0; margin: 0 0 1rem; }
   .recipe-notes h2 { font-size: 18pt; }
   h2, h3 { break-after: avoid; }
   a { text-decoration: none; }
