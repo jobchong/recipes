@@ -23,8 +23,8 @@ layout: layouts/base.njk
         {% for group in ingredients %}<div class="ingredient-group">{% if group.name %}<h3>{{ group.name }}</h3>{% endif %}<ul class="ingredients">{% for item in group.items %}<li><label><input type="checkbox"><span>{{ item }}</span></label></li>{% endfor %}</ul></div>{% endfor %}
       </section>
       <section aria-labelledby="method-title"><h2 id="method-title">Method</h2><ol class="method">{% for step in steps %}<li><div>{{ step }}</div></li>{% endfor %}</ol></section>
+      {% if notes.length %}<aside class="recipe-notes" aria-labelledby="notes-title"><h2 id="notes-title">Notes & tips</h2><ul>{% for note in notes %}<li>{{ note }}</li>{% endfor %}</ul></aside>{% endif %}
     </div>
-    {% if notes.length %}<aside class="recipe-notes" aria-labelledby="notes-title"><h2 id="notes-title">Notes & tips</h2><ul>{% for note in notes %}<li>{{ note }}</li>{% endfor %}</ul></aside>{% endif %}
   </div>
   <div class="recipe-tags"><span>Filed under</span>{% for ingredient in ingredientTags %}<a class="tag" href="/ingredients/{{ ingredient | slug }}/">{{ ingredient }}</a>{% endfor %}{% for occasion in occasions %}<a class="tag" href="/occasions/{{ occasion | slug }}/">{{ occasion }}</a>{% endfor %}</div>
 </article>
