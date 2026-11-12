@@ -55,9 +55,22 @@ If an existing photo placeholder (`placeholder: true`) is clearly the same dish,
 3. Commit only the new or changed recipe file: `git add src/recipes/<slug>.md`, with the message `Add recipe: <title>` plus the attribution lines the session requires.
 4. `git push origin main`.
 
-## 5. Report
+## 5. Wait for the live page
 
-Tell the user:
-- the live URL, `https://elo-recipes.com/recipes/<slug>/`, and that Cloudflare usually takes a minute or two to deploy it
-- the source credited
-- anything you estimated or left out (time, yield, notes)
+Cloudflare Pages deploys `main` in about a minute. Before reporting, wait until the page actually serves, so the link never opens on a 404:
+
+```bash
+url="https://elo-recipes.com/recipes/<slug>/"
+for i in $(seq 1 30); do [ "$(curl -s -o /dev/null -w '%{http_code}' --max-time 8 "$url")" = 200 ] && break; sleep 10; done
+curl -s -o /dev/null -w '%{http_code}\n' --max-time 8 "$url"
+```
+
+If it still isn't 200 after about 5 minutes, say so and give the link anyway.
+
+## 6. Hand over the link
+
+The user often runs this from their phone. You cannot open a tab on their device, so make the link a single tap away:
+
+1. Send a `PushNotification` (load it with ToolSearch if it's deferred) whose message is the recipe title and the full URL, e.g. `Published: Mapo tofu https://elo-recipes.com/recipes/mapo-tofu/`. It only reaches the phone when Remote Control is on and the user isn't watching; a "not sent" result is fine.
+2. Start the final message with the live URL as a clickable Markdown link on its own line: `[<title>](https://elo-recipes.com/recipes/<slug>/)`.
+3. Then, briefly: the source credited, and anything you estimated or left out (time, yield, notes).
