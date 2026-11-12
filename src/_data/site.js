@@ -10,4 +10,9 @@ export default {
   description: "A collection of recipes for everyday cooking and the people around your table.",
   author: "",
   url,
+  // Default link-preview image for pages without their own photo.
+  image: "/assets/images/prawn-greens-fried-rice.jpg",
+  imageAlt: "Golden rice with prawns, snow peas, and leafy greens in a metal pan.",
+  imageWidth: 947,
+  imageHeight: 1024,
 };

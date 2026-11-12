@@ -12,10 +12,11 @@
   <meta property="og:url" content="{{ page.url | absoluteUrl(site.url) }}">
   <meta property="og:title" content="{{ title or site.name }}">
   <meta property="og:description" content="{{ description or site.description }}">
-  {% if image %}<meta property="og:image" content="{{ image | absoluteUrl(site.url) }}">
-  <meta property="og:image:width" content="{{ imageWidth }}">
-  <meta property="og:image:height" content="{{ imageHeight }}">
-  <meta property="og:image:alt" content="{{ imageAlt }}">
+  {% set ogImage = image and {src: image, alt: imageAlt, width: imageWidth, height: imageHeight} or {src: site.image, alt: site.imageAlt, width: site.imageWidth, height: site.imageHeight} %}
+  {% if ogImage.src %}<meta property="og:image" content="{{ ogImage.src | absoluteUrl(site.url) }}">
+  <meta property="og:image:width" content="{{ ogImage.width }}">
+  <meta property="og:image:height" content="{{ ogImage.height }}">
+  <meta property="og:image:alt" content="{{ ogImage.alt }}">
   <meta name="twitter:card" content="summary_large_image">{% else %}<meta name="twitter:card" content="summary">{% endif %}{% endif %}
   <meta name="theme-color" content="#f8f6f0">
   <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
