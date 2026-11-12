@@ -67,7 +67,7 @@
   .browse-strip > a + a { border-left: 1px solid var(--line); }
   .browse-title { display: flex; justify-content: space-between; align-items: center; font-family: var(--serif); font-size: 2.2rem; letter-spacing: -.04em; margin-top: .35rem; }
   .browse-title span { font-family: var(--sans); font-size: 1.6rem; font-weight: 300; }
-  .site-footer { border-top: 1px solid var(--ink); display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; padding: 1.8rem 0 2.4rem; color: var(--muted); font-size: .8125rem; }
+  .site-footer { border-top: 1px solid var(--ink); display: flex; align-items: baseline; justify-content: space-between; gap: 1.5rem; padding: 1.8rem 0 2.4rem; color: var(--muted); font-size: .8125rem; }
   .footer-wordmark { font-family: var(--serif); font-style: italic; letter-spacing: -.05em; font-size: 1.6rem; color: var(--ink); text-decoration: none; }
   .page-heading { padding: 3.5rem 0 2.5rem; }
   .page-heading h1 { margin: .8rem 0 1.2rem; }
