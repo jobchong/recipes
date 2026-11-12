@@ -6,7 +6,17 @@
   <title>{% if title %}{{ title }} · {% endif %}{{ site.name }}</title>
   <meta name="description" content="{{ description or site.description }}">
   {% if not site.url or example or placeholder or noindex %}<meta name="robots" content="noindex, nofollow">{% endif %}
-  {% if site.url %}<link rel="canonical" href="{{ page.url | absoluteUrl(site.url) }}">{% endif %}
+  {% if site.url %}<link rel="canonical" href="{{ page.url | absoluteUrl(site.url) }}">
+  <meta property="og:site_name" content="{{ site.name }}">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="{{ page.url | absoluteUrl(site.url) }}">
+  <meta property="og:title" content="{{ title or site.name }}">
+  <meta property="og:description" content="{{ description or site.description }}">
+  {% if image %}<meta property="og:image" content="{{ image | absoluteUrl(site.url) }}">
+  <meta property="og:image:width" content="{{ imageWidth }}">
+  <meta property="og:image:height" content="{{ imageHeight }}">
+  <meta property="og:image:alt" content="{{ imageAlt }}">
+  <meta name="twitter:card" content="summary_large_image">{% else %}<meta name="twitter:card" content="summary">{% endif %}{% endif %}
   <meta name="theme-color" content="#f8f6f0">
   <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
   <link rel="stylesheet" href="/assets/style.css">
