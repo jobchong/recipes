@@ -7,7 +7,7 @@
 - The initial three recipes and photographs are examples. Replace or remove them when real content arrives. Do not imply that the user wrote or tested them.
 - `draft: true` excludes a recipe from both output and collections. Remove it only when ready to publish. `example: true` is a visible sample marker and adds noindex; it does not hide a page.
 - Images are optional. Use local, reasonably compressed assets, accurate alt text, and declared dimensions. Do not add runtime image services.
-- The site name, author, and canonical URL are in `src/_data/site.js`; the editable foreword is `src/_includes/foreword.md`.
+- The site name, author, and canonical URL are in `src/_data/site.js`. The home page heading is in `src/index.njk`.
 - Run `npm run check` after content or template changes. For layout changes, also check a narrow viewport and a recipe page in the browser. Check print styles if the recipe layout changes.
 - Cloudflare Pages builds `main` with `npm run check` and publishes `_site`. Keep deployment through its Git integration, not a second deploy workflow. Never enable GitHub Pages in this repo to work around a Cloudflare issue.
 - Never edit `_site` directly or commit generated output, dependencies, credentials, or personal account identifiers.

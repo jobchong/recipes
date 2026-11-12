@@ -16,7 +16,7 @@
   <a class="skip-link" href="#main">Skip to content</a>
   <div class="site-shell">
     <header class="site-header">
-      <a class="wordmark" href="/" aria-label="{{ site.name }} — home">{{ site.name }}<span class="wordmark-dot">.</span></a>
+      <a class="wordmark" href="/" aria-label="{{ site.name }} — home">{{ site.name }}</a>
       <nav class="main-nav" aria-label="Main navigation">
         <a href="/recipes/" {% if section == 'recipes' %}aria-current="{% if page.url == '/recipes/' %}page{% else %}true{% endif %}"{% endif %}>Recipes</a>
         <a href="/ingredients/" {% if section == 'ingredients' %}aria-current="{% if page.url == '/ingredients/' %}page{% else %}true{% endif %}"{% endif %}>Ingredients</a>
@@ -25,9 +25,8 @@
     </header>
     <main id="main" tabindex="-1">{{ content | safe }}</main>
     <footer class="site-footer">
-      <a class="footer-wordmark" href="/">{{ site.name }}.</a>
+      <a class="footer-wordmark" href="/">{{ site.name }}</a>
       <p>A little collection, always growing.</p>
-      <a href="/#foreword">A note from the kitchen</a>
     </footer>
   </div>
 </body>

@@ -1,5 +1,4 @@
 import { existsSync } from "node:fs";
-import { EleventyRenderPlugin } from "@11ty/eleventy";
 
 const slugify = (value) => value.normalize("NFKD").replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
 const publicRecipes = (api) => api.getFilteredByGlob("src/recipes/*.md").filter((recipe) => !recipe.data.draft).sort((a, b) => b.date - a.date || a.data.title.localeCompare(b.data.title));
@@ -42,7 +41,6 @@ function taxonomy(api, field) {
 }
 
 export default function (eleventyConfig) {
-  eleventyConfig.addPlugin(EleventyRenderPlugin);
   eleventyConfig.addPassthroughCopy("src/assets");
   eleventyConfig.addPassthroughCopy({ "src/_headers": "_headers" });
   eleventyConfig.setNunjucksEnvironmentOptions({ autoescape: true });

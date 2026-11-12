@@ -28,7 +28,6 @@
   .skip-link:focus { top: 1rem; }
   .site-header { min-height: 121px; display: flex; align-items: center; justify-content: space-between; gap: 2rem; border-bottom: 1px solid var(--ink); }
   .wordmark { font-family: var(--serif); font-size: 2.8rem; line-height: 1.1; font-weight: 400; font-style: italic; letter-spacing: -.065em; text-decoration: none; white-space: nowrap; }
-  .wordmark-dot { color: var(--accent); }
   .main-nav { display: flex; align-items: center; gap: 2.5rem; }
   .main-nav a { text-decoration: none; padding: .6rem 0; font-size: .9375rem; }
   .main-nav a[aria-current] { color: var(--accent); box-shadow: 0 1px var(--accent); }
@@ -70,7 +69,6 @@
   .browse-title span { font-family: var(--sans); font-size: 1.6rem; font-weight: 300; }
   .site-footer { border-top: 1px solid var(--ink); display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; padding: 1.8rem 0 2.4rem; color: var(--muted); font-size: .8125rem; }
   .footer-wordmark { font-family: var(--serif); font-style: italic; letter-spacing: -.05em; font-size: 1.6rem; color: var(--ink); text-decoration: none; }
-  .site-footer > a:last-child { text-decoration: none; }
   .page-heading { padding: 3.5rem 0 2.5rem; }
   .page-heading h1 { margin: .8rem 0 1.2rem; }
   .page-heading > p:last-child { max-width: 620px; color: var(--muted); font-family: var(--serif); font-size: 1.25rem; }
@@ -141,8 +139,7 @@
     .browse-strip { grid-template-columns: 1fr; margin-bottom: 2.5rem; }
     .browse-strip > a { padding: 1.5rem; }
     .browse-strip > a + a { border-left: 0; border-top: 1px solid var(--line); }
-    .site-footer { flex-wrap: wrap; justify-content: flex-start; column-gap: 2rem; row-gap: .6rem; }
-    .site-footer > a:last-child { width: 100%; }
+    .site-footer { align-items: baseline; gap: 1rem; }
     .taxonomy-grid { grid-template-columns: 1fr 1fr; gap: 0 1.5rem; }
     .taxonomy-link { flex-direction: column; gap: .3rem; }
     .recipe-intro { grid-template-columns: 1fr; gap: 2rem; padding: 1.8rem 0 2rem; }
@@ -159,14 +156,15 @@
     [id] { scroll-margin-top: .25rem; }
     body { line-height: 1.45; }
     .site-shell { padding: 0 16px; }
-    .site-header { padding: .55rem 0 .45rem; gap: .3rem; }
+    .site-header { padding: .75rem 0; gap: .2rem; }
     .wordmark { font-size: 1.85rem; }
     .main-nav { gap: 1.4rem; }
     .main-nav a { padding: .15rem 0; font-size: .875rem; }
-    .foreword { gap: 1.1rem; padding: 1rem 0 1.3rem; }
-    .foreword h1 { font-size: 2.4rem; margin: .4rem 0 .6rem; }
+    .foreword { gap: 1rem; padding: 1rem 0; }
+    .foreword-copy { padding-top: 0; }
+    .foreword h1 { font-size: 2.4rem; margin: .4rem 0 .75rem; }
     .foreword-text { font-size: 1rem; }
-    .foreword .text-link { margin-top: .8rem; }
+    .foreword .text-link { margin-top: 0; }
     .featured-caption { margin: .45rem 0 .2rem; }
     .featured-recipe h2 { font-size: 1.5rem; }
     .home-recipes { padding: 1.1rem 0 1.4rem; }
@@ -176,10 +174,10 @@
     .card-meta { margin: .4rem 0 .15rem; }
     .recipe-card h2, .recipe-card h3 { font-size: 1.2rem; }
     .recipe-card p { margin-top: .2rem; font-size: .8125rem; line-height: 1.4; }
-    .browse-strip { margin-bottom: 1.2rem; }
+    .browse-strip { margin-bottom: 1rem; }
     .browse-strip > a { padding: .8rem 1rem; }
     .browse-title { font-size: 1.6rem; margin-top: .1rem; }
-    .site-footer { padding: .9rem 0 1.1rem; }
+    .site-footer { padding: 1rem 0; }
     .page-heading { padding: 1rem 0 .7rem; }
     .page-heading h1 { font-size: 2.2rem; margin: .3rem 0 .45rem; }
     .page-heading > p:last-child { font-size: 1rem; }
